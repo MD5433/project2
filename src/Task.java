@@ -75,7 +75,7 @@ public class Task {
         }
     }
 
-    public static void editTask() {
+    public static void updateTask() {
         listTask();
         try {
             System.out.print("Enter task number to edit: ");
@@ -109,15 +109,23 @@ public class Task {
             }
         }
     }
-//lists out a specific task by the priority number
+//list the task by the priority number
     public static void listByPriority() {
         try {
             System.out.print("Enter the priority to filter (0-5): ");
             int priority = Integer.parseInt(myIn.nextLine());
+
+            if (priority < 0 || priority > 5) {
+                System.out.println("Invalid input, priority must be between 0 and 5.");
+                return;
+            }
+
             for (int i = 0; i < tasks.size(); i++) {
                 Task task = tasks.get(i);
                 if (task.getPriority() == priority) {
                     System.out.println(task);
+                } else {
+                    System.out.println("Invalid input, input for priority must be between 0-5");
                 }
             }
         } catch (NumberFormatException e) {
