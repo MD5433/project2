@@ -65,7 +65,6 @@ public class Task {
 
     public static void removeTask() {
         listTask();
-        if (tasks.isEmpty()) return;
         try {
             System.out.print("Enter task number to remove: ");
             int index = Integer.parseInt(myIn.nextLine()) - 1;
@@ -78,7 +77,6 @@ public class Task {
 
     public static void editTask() {
         listTask();
-        if (tasks.isEmpty()) return;
         try {
             System.out.print("Enter task number to edit: ");
             int index = Integer.parseInt(myIn.nextLine()) - 1;
@@ -111,12 +109,13 @@ public class Task {
             }
         }
     }
-
+//lists out a specific task by the priority number
     public static void listByPriority() {
         try {
             System.out.print("Enter the priority to filter (0-5): ");
             int priority = Integer.parseInt(myIn.nextLine());
-            for (Task task : tasks) {
+            for (int i = 0; i < tasks.size(); i++) {
+                Task task = tasks.get(i);
                 if (task.getPriority() == priority) {
                     System.out.println(task);
                 }
