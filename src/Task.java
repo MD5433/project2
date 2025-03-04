@@ -47,7 +47,7 @@ public class Task {
                 '}';
     }
 
-    public static void addTask() {
+    public static void taskAdd() {
         try {
             System.out.println("Enter a title for the task: ");
             String title = myIn.nextLine();
@@ -63,8 +63,8 @@ public class Task {
 
     }
 
-    public static void removeTask() {
-        listTask();
+    public static void taskRemove() {
+        taskList();
         try {
             System.out.print("Enter task number to remove: ");
             int index = Integer.parseInt(myIn.nextLine()) - 1;
@@ -75,8 +75,8 @@ public class Task {
         }
     }
 
-    public static void updateTask() {
-        listTask();
+    public static void taskUpdate() {
+        taskList();
         try {
             System.out.print("Enter task number to edit: ");
             int index = Integer.parseInt(myIn.nextLine()) - 1;
@@ -100,7 +100,7 @@ public class Task {
         }
     }
 
-    public static void listTask() {
+    public static void taskList() {
         if (tasks.isEmpty()) {
             System.out.println("No tasks available: ");
         } else {
@@ -110,7 +110,7 @@ public class Task {
         }
     }
 //list the task by the priority number
-    public static void listByPriority() {
+    public static void taskByPriority() {
         try {
             System.out.print("Enter the priority to filter (0-5): ");
             int priority = Integer.parseInt(myIn.nextLine());
