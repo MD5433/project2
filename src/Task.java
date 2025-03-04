@@ -1,3 +1,5 @@
+import jdk.jfr.Description;
+
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -51,10 +53,13 @@ public class Task {
         try {
             System.out.println("Enter a title for the task: ");
             String title = myIn.nextLine();
+            System.out.println(title);
             System.out.print("Enter a description for the task: ");
             String description = myIn.nextLine();
+            System.out.println(description);
             System.out.print("Enter priority for the task (0-5): ");
             int priority = Integer.parseInt(myIn.nextLine());
+            System.out.println(priority);
             tasks.add(new Task(title, description, priority));
             System.out.println("Task added.");
         } catch (NumberFormatException e){
@@ -67,8 +72,8 @@ public class Task {
         taskList();
         try {
             System.out.print("Enter task number to remove: ");
-            int index = Integer.parseInt(myIn.nextLine()) - 1;
-            tasks.remove(index);
+            int userInput = Integer.parseInt(myIn.nextLine()) - 1;
+            tasks.remove(userInput);
             System.out.println("Task removed.");
         } catch (IndexOutOfBoundsException | NumberFormatException e) {
             System.out.println("Invalid task number.");
@@ -105,7 +110,7 @@ public class Task {
             System.out.println("No tasks available: ");
         } else {
             for (int i = 0; i < tasks.size(); i++) {
-                System.out.println((i + 1) + ". " + tasks.get(i));
+                System.out.println(tasks.get(i));
             }
         }
     }
