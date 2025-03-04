@@ -2,24 +2,24 @@
 public class Main {
     public static void main(String[] args) {
         while (true) {
-            displayMenu();
+            taskDisplay();
             try {
                 int choice = Integer.parseInt(Task.myIn.nextLine());
                 switch (choice) {
                     case 1:
-                        Task.addTask();
+                        Task.taskAdd();
                         break;
                     case 2:
-                        Task.removeTask();
+                        Task.taskRemove();
                         break;
                     case 3:
-                        Task.editTask();
+                        Task.taskUpdate();
                         break;
                     case 4:
-                        Task.listTask();
+                        Task.taskList();
                         break;
                     case 5:
-                        Task.listByPriority();
+                        Task.taskByPriority();
                         break;
                     case 0:
                         System.out.println("Exiting program.");
@@ -37,7 +37,7 @@ public class Main {
 
 
 
-    static void displayMenu() {
+    static void taskDisplay() {
         System.out.println("Choose an option:");
         System.out.println("(1) Add a task");
         System.out.println("(2) Remove a task");
