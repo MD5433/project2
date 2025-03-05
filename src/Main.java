@@ -41,7 +41,7 @@ public class Main {
         System.out.println("Choose an option:");
         System.out.println("(1) Add a task");
         System.out.println("(2) Remove a task");
-        System.out.println("(3) Edit a task");
+        System.out.println("(3) update a task");
         System.out.println("(4) List all tasks");
         System.out.println("(5) List task by priority");
         System.out.println("(0) Exit");
