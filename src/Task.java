@@ -58,8 +58,17 @@ public class Task {
             String description = myIn.nextLine();
             System.out.println(description);
             System.out.print("Enter priority for the task (0-5): ");
-            int priority = Integer.parseInt(myIn.nextLine());
-            System.out.println(priority);
+            int priority;
+            while (true) {
+                System.out.print("Enter priority for the task (0-5): ");
+                priority = Integer.parseInt(myIn.nextLine());
+
+                if (priority >= 0 && priority <= 5) {
+                    break; // Exit loop if priority is valid
+                } else {
+                    System.out.println("Invalid priority. Please enter a number between 0 and 5.");
+                }
+            }
             tasks.add(new Task(title, description, priority));
             System.out.println("Task added.");
         } catch (NumberFormatException e){
@@ -96,8 +105,14 @@ public class Task {
             if (!description.isEmpty()) task.setDescription(description);
 
             System.out.print("Enter new priority (0-5), to keep the current priority, leave it blank: ");
-            String priorityInput = myIn.nextLine();
-            if (!priorityInput.isEmpty()) task.setPriority(Integer.parseInt(priorityInput));
+            int usPriority = Integer.parseInt(myIn.nextLine());;
+            if (usPriority == Integer.parseInt(null)) {
+                if (usPriority >= 0 && usPriority <= 5) {
+                    task.setPriority(usPriority);
+                } else {
+                    System.out.println("Invalid priority.");
+                }
+            }
 
             System.out.println("Task updated.");
         } catch (IndexOutOfBoundsException | NumberFormatException e) {
@@ -117,24 +132,23 @@ public class Task {
 //list the task by the priority number
     public static void taskByPriority() {
         try {
-            System.out.print("Enter the priority to filter (0-5): ");
-            int priority = Integer.parseInt(myIn.nextLine());
+            System.out.print("Enter the priority to filter (1-4): ");
+            int usPriority = Integer.parseInt(myIn.nextLine());
 
-            if (priority < 0 || priority > 5) {
-                System.out.println("Invalid input, priority must be between 0 and 5.");
-                return;
-            }
-
-            for (int i = 0; i < tasks.size(); i++) {
-                Task task = tasks.get(i);
-                if (task.getPriority() == priority) {
-                    System.out.println(task);
-                } else {
-                    System.out.println("Invalid input, input for priority must be between 0-5");
+            if (usPriority > 0 && usPriority < 5) {
+                for (int i = 0; i < tasks.size(); i++) {
+                    Task task = tasks.get(i);
+                    if (task.getPriority() == usPriority) {
+                        System.out.println(task);
+                    }
                 }
             }
+
+
+
+
         } catch (NumberFormatException e) {
-            System.out.println("Invalid input, input for priority must be an integer: ");
+            System.out.println("Invalid input, input for priority must be an integer or less than 5: ");
         }
     }
 
